@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const colors = require("tailwindcss/colors");
+const neonUtilities = require("./neonUtilities.cjs");
+
+module.exports = {
   content: ["./build/**/*.{html,js}"],
   theme: {
     extend: {
+      colors: {
+        primary: { ...colors.slate, DEFAULT: colors.slate[600] },
+      },
       screens: {
         widescreen: { raw: "(min-aspect-ratio: 3/2)" },
         tallscreen: { raw: "(max-aspect-ratio: 13/20)" },
@@ -19,5 +25,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [neonUtilities],
 };
